@@ -747,7 +747,8 @@
     background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAL0lEQVRIx2NgGOqAkYGB4T8tLWCitQ+GvgWjYODBaD4YeAtGwcCD0Xww8BYMfQAAOewDE89bHBkAAAAASUVORK5CYII=");
     position: fixed;
     right: 10px;
-    top: 10px; }
+    top: 10px;
+    z-index: 2; }
   .header.open .header__container-wrp {
     display: block; }
   .header.open .hamburger {
