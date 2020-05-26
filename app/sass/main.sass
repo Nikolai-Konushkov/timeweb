@@ -124,6 +124,9 @@ $footer: #FAFAFB
 	background-color: $white
 	z-index: 2
 
+.hamburger
+	display: none
+
 .header__container
 	display: flex
 	align-items: center
@@ -159,10 +162,6 @@ $footer: #FAFAFB
 	margin-left: 6px
 	cursor: pointer
 
-@media all and (max-width: 1199px)
-	.header
-		display: none
-
 .banner
 	background-image: url('../img/image.png')
 	background-position: bottom
@@ -182,15 +181,6 @@ $footer: #FAFAFB
 	.banner__btn
 		margin-left: 8px
 		margin-right: 8px
-
-@media all and (max-width: 767px)
-	.banner
-		background-image: none
-	.banner__btn-cont
-		flex-direction: column
-		align-items: center
-		.banner__btn
-			margin-bottom: 15px
 
 .banner__image-cont
 	position: absolute
@@ -220,10 +210,6 @@ $footer: #FAFAFB
 	.active
 		color: $blue
 		border-bottom: 2px solid $blue
-
-@media all and (max-width: 767px)
-	.how-works__tab
-		width: unset
 
 .how-works__content-item
 	margin-bottom: 80px
@@ -283,19 +269,6 @@ $footer: #FAFAFB
 			line-height: 30px
 			padding: 32px
 			margin-bottom: 32px
-
-@media all and (min-width: 1200px)
-	.review__item:nth-of-type(1)
-		padding-right: 36px
-	.review__item:nth-of-type(2)
-		padding-right: 18px
-		padding-left: 18px
-	.review__item:nth-of-type(3)
-		padding-left: 36px
-
-@media all and (max-width: 1199px)
-	.review__item
-		margin-bottom: 50px
 
 .review__author-block
 	display: flex
@@ -452,10 +425,6 @@ $footer: #FAFAFB
 	&:active
 		box-shadow: 0px 2px 16px rgba(0,0,0,0.3)
 
-@media all and (max-width: 1199px)
-	.photographers
-		display: none
-
 .subscribe
 	display: flex
 	background-color: $bg-grey
@@ -467,14 +436,6 @@ $footer: #FAFAFB
 
 .subscribe__left-content
 	max-width: 410px
-
-@media all and (max-width: 1199px)
-	.subscribe__left-content
-		max-width: unset
-@media all and (max-width: 480px)
-	.subscribe__left-content
-		max-width: unset
-		width: calc( 100% + 15px )
 
 .subscribe__title
 	text-align: left
@@ -492,6 +453,7 @@ $footer: #FAFAFB
 	margin-bottom: 24px
 	transition: .2s
 	position: relative
+	outline: none
 	&:focus
 		border-color: $blue
 	&::placeholder
@@ -524,20 +486,12 @@ $footer: #FAFAFB
 		height: 100%
 		object-fit: cover
 
-@media all and (max-width: 1199px)
-	.subscribe__photo-cont
-		display: none
-
 .faq__cont
 	width: 752px
 	box-shadow: 0px 2px 16px $black80
 	border-radius: 16px
 	margin: 51px auto 0 auto
 	overflow: hidden
-
-@media all and (max-width: 1199px)
-	.faq__cont
-		width: unset
 
 .faq__item
 	padding: 32px 26px
@@ -618,13 +572,75 @@ $footer: #FAFAFB
 .footer,.how-works,.review,.faq,.photographers,.subscribe__left
 	padding-bottom: 120px
 
+@media all and (min-width: 1200px)
+	.review__item:nth-of-type(1)
+		padding-right: 36px
+	.review__item:nth-of-type(2)
+		padding-right: 18px
+		padding-left: 18px
+	.review__item:nth-of-type(3)
+		padding-left: 36px
+
 @media all and (max-width: 1199px)
+	.review__item
+		margin-bottom: 50px
+	.photographers
+		display: none
+	.header__container-wrp
+		display: none
+	.hamburger
+		display: block
+		width: 24px
+		height: 24px
+		background-size: 100%
+		background-image:  url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAL0lEQVRIx2NgGOqAkYGB4T8tLWCitQ+GvgWjYODBaD4YeAtGwcCD0Xww8BYMfQAAOewDE89bHBkAAAAASUVORK5CYII=')
+		position: fixed
+		right: 10px
+		top: 10px
+	.header.open
+		.header__container-wrp
+			display: block
+		.hamburger
+			background-image:  url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAA7EAAAOxAGVKw4bAAABX0lEQVRIx6WWwWrCQBRF772UJvgpRUIQEdehiBTpovh34ge4cNWvkiDiwkqwYBedSIydN5N0YFaTOefNey+ZAG4kSZKSXEt6Qc9Bcklyk6bp891CkiQpgE8AVwA7ScMe8A8AFwBXktubpAW/NiRZB/h7Da/nTUJy24LXs5SUR8AXAKq/GCRXtb3ySPaSRgb8zdhb3rJgReEk4zZc0jywJ+8SzUHSpAF/BXCOhrei8m08SppKKoxnDlZKa8nMkgA4GfAxYkYgBb7TTaLgDUlhRPs/eAfJUdLUZAQcXwC+jfUnAIO+0U/wW9RQis6uZp3gYwCHCHhTMo+FjwDsPaCTcarKvawmPLfgkgpXVEuy8MEzAKWRgiKyPpX7gN7BhwB2XYroJL46XdwFBLgr0oLPejbDheQSJNe+o8Z0htUUJDe+KzPcEYHmsO5lfyeEJeUDvB7ut2X70AHdJBnJVRP+A5MKCoLMN7VOAAAAAElFTkSuQmCC')
+	.header__container
+		flex-direction: column
+		padding-top: 10px
+		padding-bottom: 10px
+	.header__container,.header--fixed .header__container
+		height: auto
+	.header__logo,.header__order,.header__menu
+		width: auto
+	.header__menu
+		flex-direction: column
+		text-align: center
+	.header__order-text
+		margin-top: 5px
+		margin-bottom: 5px
 	.footer__contacts-link:nth-of-type(1), .footer__link:nth-of-type(1) 
 		margin-top: 16px
 	.footer__social-cont
 		margin-top: 16px
+	.subscribe__left-content
+		max-width: unset
+	.faq__cont
+		width: unset
+	.subscribe__photo-cont
+		display: none
+
+@media all and (max-width: 767px)
+	.banner
+		background-image: none
+	.banner__btn-cont
+		flex-direction: column
+		align-items: center
+		.banner__btn
+			margin-bottom: 15px
+	.how-works__tab
+		width: unset
 
 @media all and (max-width: 480px)
+	.title
+		font-size: 36px
 	section, .footer,.header
 		padding-left: 10px
 		padding-right: 10px
@@ -636,3 +652,6 @@ $footer: #FAFAFB
 		padding-top: 70px
 	.banner__title
 		padding-top: 110px
+	.subscribe__left-content
+		max-width: unset
+		width: calc( 100% + 15px )
