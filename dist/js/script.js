@@ -15,11 +15,11 @@ for (let i = 0; i < acc.length; i++) {
     	this.classList.toggle("active");
   	});
 }
-
+/* Tabs */
 let tab = document.getElementsByClassName('how-works__tab');
 let tab_cont = document.getElementsByClassName('how-works__content');
 for (let i = 0; i < tab.length; i++) {
-	tab[i].addEventListener("click", function() {
+	tab[i].addEventListener('click', function() {
 		for (let i = 0; i < tab.length; i++) {
 			tab[i].classList.remove('active');
 			tab_cont[i].classList.remove('active');
@@ -28,3 +28,8 @@ for (let i = 0; i < tab.length; i++) {
 		tab_cont[i].classList.add('active');
 	});
 }
+/* Mobile Menu */
+let hamburger = document.querySelector('.hamburger');
+hamburger.onclick = function() {
+	header.classList.toggle('open');
+};
